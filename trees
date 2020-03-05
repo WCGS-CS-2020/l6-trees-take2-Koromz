@@ -1,0 +1,120 @@
+using System;
+
+namespace l6_trees
+{
+
+    /*
+     * Tasks:
+     * 1) Complete the implementation of the Node methods
+     * 2) Print out the tree using the different tree traversal metods
+     * 3) Test findNote() and deleteNode()
+     *
+     *
+     */
+    class Node
+    {
+        // Attributes
+        private Node left;
+        private Node right;
+        private string item;
+
+        //Methods
+        public Node(string item) { }
+        public void addNode(string item)
+        {
+            string i = "";
+            root = new Node(item);
+            Node current = root;
+            Node parent;
+            parent.item = i;
+            while (root != null)
+            {
+                parent = current;
+                if (i < current.item)
+                {
+                    current = current.left;
+                    if (current == null)
+                    {
+                        parent.left = new Node(item);
+                        break;
+                    }
+
+                    else
+                    {
+                        current = current.right;
+                        if (current == null)
+                        {
+                            parent.right = new Node(item);
+                            break;
+
+
+                        }
+                    }
+                }
+
+            }
+        }
+        public Boolean findNode(string item) { return true; }
+        public Boolean deleteNote(string item) { return true; }
+        void printTree() { }
+
+        class Program
+        {
+
+
+            public void Post(Node Root)
+            {
+                if (Root != null)
+                {
+                    Post(Root.left);
+                    Post(Root.right);
+                    Console.Write(Root.item + " ");
+                }
+            }
+            public void Inorder(Node Root)
+            {
+                if (Root != null)
+                {
+                    Inorder(Root.left);
+                    Console.Write(Root.item);
+                    Inorder(Root.right);
+                }
+            }
+            public void Pre(Node Root)
+            {
+                if (Root != null)
+                {
+                    Console.Write(Root.item);
+                    Pre(Root.left);
+                    Pre(Root.right);
+                }
+            }
+            static void Main(string[] args)
+
+
+
+            {
+                Node root = null;
+
+                string[] months = { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+
+
+                // process all the nodes on the array
+                //
+                foreach (var mon in months)
+                {
+                    if (root == null)
+                        root = new Node(mon);
+                    else
+                        root.addNode(mon);
+                }
+                Post(root);
+
+                // print out the tree using different traversal methods
+                //
+
+                // Test the findNote() and deleteNode()
+            }
+        }
+    }
+}
